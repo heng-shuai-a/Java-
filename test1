@@ -1,0 +1,758 @@
+package javach01;
+import com.sun.org.apache.xpath.internal.objects.XString;
+import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
+import com.sun.xml.internal.ws.api.pipe.NextAction;
+import jdk.nashorn.internal.codegen.FunctionSignature;
+import org.w3c.dom.ls.LSInput;
+import sun.awt.OSInfo;
+
+import java.util.Arrays;
+
+
+
+//public class Test{
+//    public static void main(String[] args) {//
+//        double x=2.0; int y=4; x/=++y;
+//        System.out.println(x);
+//        short a =128;
+//
+//        byte b =(byte) a;
+//        System.out.println(a);
+//        System.out.println(b);
+//        System.out.println("haha");
+//
+////      System.out.println("my name is"xuheng."");//错误
+//        System.out.println("my name is\" xuheng.\"");//正确
+//        System.out.println("hello world");
+//        int a=10;
+//        long b=20;
+////        a=b;//导致精度丢失，long范围更大，这样的赋值导致数字被截断，编译错误
+//        a=(int)b;//  (int)强制类型转换
+//        b=a;
+//          boolean aa=true;
+//        int bb=10;
+//        System.out.println(aa+bb);//类型互不相干，无法相加
+//        long c=11__1123_134;
+//        System.out.println(c);
+
+//       //数值提升
+//        int a=10;
+//        long b=20;
+//        //int ret=a+b;//错误
+//        long  ret=a+b;//正确
+
+//        byte a=10;
+//        byte b=20;
+        //byte ret=a+b;//如果两个操作数都是比int短的类型，就会统一都
+                        //转成int，再进行运算
+        //int  ret=a+b;正确
+       // byte ret= (byte) (a+b);//正确
+//        String str="101";
+//        int num=Integer .parseInt(str);
+//        System.out.println(num);
+//    int num=-9%2;
+//        System.out.println(num);//-1
+//       double num1=5.0;
+//       double num2=1.5;
+//        System.out.println(num1%num2);//0.5
+        //int a=10;
+        //a++;
+       // ++a;
+       // System.out.println(a);//11
+//        int a=1;
+//        int ret=(a++)+(a++);
+//        System.out.println(ret);
+//        int a=10;
+//        int b=20;
+//        System.out.println(a==b);//falsr
+//        String s1="asf";
+//        String s2="asf";
+//        System.out.println(s1==s2);//true
+//        int i=0,a=0,b=2,c=3;
+//        if((i==a++)&&(c==a++)&&(a!=b))
+//        {
+//            System.out.println("cba");
+//        }
+//        else
+//            System.out.println("abc");
+//        System.out.println(10<20&&(10/0)==0);//异常抛出
+//        System.out.println(10&20);//0
+//        int a=10;
+//        System.out.println(~a);
+//        System.out.printf("%x",~a);
+//        int a=10;
+//        int b=20;
+//        b=a^b;
+//        a=a^b;
+//        b=a^b;
+//        System.out.println(a);
+//        System.out.println(b);
+//        int a=10;
+//        int b=20;
+//        int c=(a<b?a:b)+10;
+//        System.out.println(c);//20
+//        int c=a<b?a:b+10;
+//        System.out.println(c);//10
+//public class Test{
+//     public static void main(String[] args) {//1~100中，求9的个数
+//    int i=0;
+//    int ans=0;
+//         {for(i=1;i<=100;i++)
+//            {if(i%10==9||i/10==9)//i%10==9    个位等于9
+//                                 //i/10==9     十位等于9
+//                {
+//                 ans++;
+//                }
+//            }
+//         }
+//    System.out.println(ans);
+//    }
+//}
+//public class Test{
+//    public static void main(String[] args) {
+//        int year=1000;
+//        int count=0;
+//        for(year=1000;year<=2000;year++)
+//        {  if(year%400==0||(year%100!=0&&year%4==0)) {
+//            System.out.printf("%5d", year);
+//            count++;
+//            if (count % 20 == 0) {//十个数进行一换行
+//                System.out.printf("\n");
+//            }
+//        }
+//        }
+//    }
+//}
+
+//public class Test{
+//    public static void main(String[] args) {
+//        int n=0;
+//        for(n=2;n<=100;n++)
+//        {
+//            int flag=1;
+//            double k=Math.sqrt(n);
+//            for(int i=2;i<=k;i++)
+//            {
+//                if(n%i==0)
+//                {
+//                    flag=0;
+//                }
+//            }
+//            if(flag==1)
+//            {
+//                System.out.printf("%4d",n);
+//            }
+//        }
+//    }
+//}
+//import java.util.Scanner;
+//public class Test{
+//    public static boolean  is_prime(int n)
+//    {
+//            boolean flag=true;
+//            double k=Math.sqrt(n);
+//            for(int i=2;i<=k;i++) {
+//                if (n % i == 0) {
+//                    flag = false;
+//                }
+//            }
+//            return flag;
+//    }
+//    public static void main(String[] args) {
+//        Scanner input=new Scanner(System.in);
+//        while(input.hasNext())
+//        {
+//            int n=input.nextInt();
+//        if (is_prime(n))
+//        {
+//            System.out.println(n+"是素数");
+//        }
+//        else
+//            System.out.println(n+"不是素数");
+//        }
+//    }
+//}
+//import java.util.Scanner;
+//public class Test{
+//    public static void main(String[] args) {
+//        Scanner input=new Scanner(System.in);
+//        System.out.print("请您输入内容:");
+//        int n=input.nextInt();
+//        if(n<18)
+//        {
+//            System.out.println("少年");
+//        }
+//        else if(n>=19&&n<=28)
+//        {
+//            System.out.println("青年");
+//        }
+//        else if(n>=29&&n<=55)
+//        {
+//            System.out.println("青年");
+//        }
+//        else
+//            System.out.println("老年");
+//    }
+//}
+
+
+//
+//import java.util.Scanner;
+//public class Test{
+//    public static void main(String[] args) {
+//        Scanner input=new Scanner(System.in);
+//        while(input.hasNext())
+//        {
+//            int n=input.nextInt();
+//            char [][] arr = new char[n][n];
+//            for(int i=0;i<n;i++)
+//            {
+//                arr[i][i]='*';
+//            }
+//            for(int j=0;j<n;j++)
+//            {
+//                arr[j][n-j-1]='*';
+//            }
+//            for(int i=0;i<n;i++)
+//            {
+//                int j=0;
+//                for(j=0;j<n;j++)
+//                {
+//                    System.out.printf("%c",arr[i][j]);
+//                }
+//                if(j==n)
+//                {
+//                    System.out.println("\n");
+//                }
+//            }
+//        }
+//     }
+//}
+
+//import  java.util.Scanner;
+//public class Test{
+//    public static void main(String[] args) {
+//        Scanner sc=new Scanner(System.in);
+//        int sum=0;
+//        while(sc.hasNextInt()){//Ctrl+d  <==>  EOF
+//            int num= sc.nextInt();
+//            System.out.println("输入的数字："+num);
+//            sum+=num;
+//        }
+//        System.out.println(sum);
+//   }
+//}
+
+
+//import java.util.Random;
+//import java.util.Scanner;
+//public class Test{
+//    public static void main(String[] args) {
+//        Random random = new Random();
+//        int toGuess = random.nextInt(100);
+////        System.out.println(toGuess);//查看随机值
+//        Scanner sc = new Scanner(System.in);
+//        while (true) {
+//            System.out.println("输入：");
+//            int num = sc.nextInt();
+//            if (num < toGuess)
+//            {
+//                System.out.println("小了");
+//            }
+//            else if (num > toGuess)
+//            {
+//                System.out.println("高了");
+//            }
+//            else
+//            {
+//                System.out.println("恭喜你，猜对了");
+//                break;
+//            }
+//        }
+//        sc.close();
+//    }
+//}
+
+
+
+//import java.util.Scanner;
+//public class Test{
+//    public static void main(String[] args) {
+//        Scanner scanner=new Scanner(System.in);
+//        System.out.println("请输入n：");
+//        int n=scanner.nextInt();
+//        printMutiplicationTable(n);//打印乘法口诀表
+//    }
+//    public static void printMutiplicationTable(int n) {
+//        for(int i=1;i<=n;i++)
+//        {
+//            for(int j=1;j<=i;j++)
+//            {
+//                System.out.printf("%-2dX%2d= %-2d  ",j,i,i*j);
+//            }
+//            System.out.println();
+//        }
+//    }
+//}
+
+//public class Test{
+//    public static void main(String[] args) {
+//        int res=calcGCD(100,120);
+////        int res=calcGCD(13,12);
+//        System.out.println(res);
+//    }
+//    public static int calcGCD(int a, int b) {
+//        int min=Integer.min(a,b);
+//        for(int i=min;i>0;i--)
+//        {
+//            if(a%i==0&&b%i==0)
+//            {
+//                return i;
+//            }
+//        }
+//        return 1;
+//    }
+//}
+
+//public class Test{
+//    public static void main(String[] args) {
+//        double result=calcSerise(100);
+//        System.out.println(result);
+//    }
+//    public static double calcSerise(int n) {
+//        double sum1=0;
+//        double sum2=0;
+//        for(int i=1;i<=n;i+=2)
+//        {
+//            sum1+=1.0/i;//计算1+1/3+1/5+...+1/97+1/99;
+//        }
+//        for(int i=2;i<=n;i+=2)
+//        {
+//            sum2+=1.0/i;//计算1/2+1/4+1/6+...+1/98+1/100
+//        }
+//        return sum1-sum2;
+//    }
+//}
+
+
+
+//import java.util.Scanner;
+//public class Test{
+//    public static void main(String[] args) {
+//        Scanner scanner=new Scanner(System.in);
+//        System.out.println("请设置密码：");
+//        String  pass_word=scanner.next();
+//        if(check(pass_word,3))
+//        {
+//            System.out.println("密码正确，登陆成功！！！");
+//        }
+//        else
+//        {
+//            System.out.println("账户已锁定！！！");
+//        }
+//    }
+//
+//    public static boolean check(String pass_word,int times) {
+//        Scanner scanner=new Scanner(System.in);
+//        for (int i = 0; i < 3; i++) {
+//            System.out.println("请输入密码：");
+//            String psd = scanner.nextLine();
+//            if (pass_word.equals(psd)) {
+//                return true;
+//            }
+//            if(i!=times){
+//                System.out.printf("密码错误，还有%d次机会，",times-i-1);
+//            }
+//        }
+//        return false;
+//    }
+//}
+
+
+//import java.util.Scanner;
+//public class Test{
+//    public static void main(String[] args) {
+//        Scanner scanner=new Scanner(System.in);
+//        System.out.println("请输入一个数字：");
+//        int  n=scanner.nextInt();
+//        String s=Integer.toString(n);
+//        int len=s.length();
+//        print(n,len);
+//    }
+//    public static void print(int n,int len) {
+//        int i=0;
+//        for (int j = 0; j <len ; j++) {
+//            i=n%10;
+//            System.out.printf("%d第%d位是%d\n",n,j+1,i);
+//            n/=10;
+//        }
+//    }
+//}
+
+
+//import java.util.Scanner;
+//public class Test{
+//    public static void main(String[] args) {
+//        Scanner scanner=new Scanner(System.in);
+//        System.out.println("请输入一个数字：");
+//        int  n=scanner.nextInt();
+//        System.out.println(count_bit(n));
+//    }
+//    public static int  count_bit(int n) {
+//        int count=0;
+//        while (n!=0)
+//        {
+//            n=n&(n-1);
+//            count++;
+//        }
+//        return count;
+//    }
+//}
+
+
+//import java.util.Arrays;
+//public class Test {
+//    public static void main(String[] args) {
+//        int arr[] = {32, 56, 30, 21, 46, 89, 10};
+//        System.out.println(Arrays.toString(arr));
+//        bublle_sort(arr);
+//        System.out.println(Arrays.toString(arr));
+//    }
+//    public static void bublle_sort(int[] arr) {
+//        for (int i = 0; i < arr.length; i++) {
+//            for (int j = i; j < arr.length; j++) {
+//                if (arr[i] > arr[j]) {
+//                    int tmp = arr[i];
+//                    arr[i] = arr[j];
+//                    arr[j] = tmp;
+//                }
+//            }
+//        }
+//    }
+//}
+
+
+//import java.util.Arrays;
+//public class Test {
+//    public static void main(String[] args) {
+//        int arr[] = {32, 56, 30, 21, 46, 89, 10};
+//        System.out.println(Arrays.toString(arr));
+//        System.out.println(is_soted(arr));
+//        bublle_sort(arr);
+//        System.out.println(Arrays.toString(arr));
+//        System.out.println(is_soted(arr));
+//    }
+//    public static void bublle_sort(int[] arr) {
+//        for (int i = 0; i < arr.length; i++) {
+//            for (int j = i; j < arr.length; j++) {
+//                if (arr[i] > arr[j]) {
+//                    int tmp = arr[i];
+//                    arr[i] = arr[j];
+//                    arr[j] = tmp;
+//                }
+//            }
+//        }
+//    }
+//    public static boolean is_soted(int[] a) {
+//        for (int i = 0; i < a.length - 1; i++) {
+//            if (a[i] > a[i + 1]) {
+//                return false;
+//            }
+//        }
+//        return true;
+//    }
+//}
+
+
+
+//public class Test {
+//    public static void main(String[] args) {
+//        int arr[] = {1,2,4,8,10,13,15,26};
+//        System.out.println(Arrays.toString(copyOF(arr)));
+//    }
+//    public static int[] copyOF(int[] arr) {
+//        int[] ret=new int[arr.length];
+//        for (int i=0;i<arr.length;i++)
+//        {
+//            ret[i]=arr[i];
+//        }
+//        return ret;
+//    }
+//}
+
+//public class Test {
+//    public static void main(String[] args) {
+//        int arr[] = {1,2,4,8,10,13,15,26};
+//        System.out.println(tostring(arr));
+//    }
+//    public static String tostring(int[] arr) {
+//        String ret="[";
+//        for (int i=0;i<arr.length;i++)
+//        {
+//            ret+=arr[i];
+//            if(i!=arr.length-1)
+//            {
+//                ret+=",";
+//            }
+//        }
+//        return ret+"]";
+//    }
+//}
+
+//public class Test {
+//    public static void main(String[] args) {
+//        int arr[] = {1,2,4,8,10,13,15,26};
+//        System.out.println(avg(arr));
+//    }
+//    public static double avg(int[] arr) {
+//       int sum=0;
+//       for(int i=0;i<arr.length;i++)
+//       {
+//           sum+=arr[i];
+//       }
+//       return sum/(double)arr.length;
+//    }
+//}
+
+
+//public class Test {
+//    public static void main(String[] args) {
+//        int arr[] = {1,2,4,8,10,13,15,26};
+//        System.out.println(sum(arr));
+//    }
+//    public static int sum(int[] arr) {
+//        int sum=0;
+//        for(int i=0;i<arr.length;i++)
+//        {
+//            sum+=arr[i];
+//        }
+//        return sum;
+//    }
+//}
+
+//public class Test {
+//    public static void main(String[] args) {
+//        int arr[] = {1,2,4,8,10,13,15,26};
+//        System.out.println(Arrays.toString(arr));
+//        System.out.println(Arrays.toString(transform(arr)));
+//    }
+//    public static int[] transform(int[] arr) {
+//        for (int i=0;i<arr.length;i++)
+//        {
+//            arr[i]=arr[i]*2;
+//        }
+//        return arr;
+//    }
+//}
+
+//public class Test {
+//    public static void main(String[] args) {
+//        int arr[] = {1,2,4,8,10,13,15,26};
+//        print_array(arr);
+//    }
+//    public static void print_array(int[] arr) {
+//        for (int i=0;i<arr.length;i++)
+//        {
+//            System.out.printf("%-4d",arr[i]);
+//        }
+//    }
+//}
+
+
+//public class Test {
+//    public static void main(String[] args) {
+//        int[] arr=new int[100];
+//        for(int i=0;i<arr.length;i++)
+//        {
+//            arr[i]=i+1;
+//        }
+//        System.out.println(Arrays.toString(arr));
+//    }
+//}
+
+//public class Test {
+//    public static void main(String[] args) {
+//        int arr[]={1,2,3,4,5,4,3,2,1};
+//        System.out.println(find_once(arr));
+//    }
+//    public static int find_once(int[] arr) {
+//        int ans=0;
+//        for(int i=0;i<arr.length;i++)
+//        {
+//            ans^=arr[i];
+//        }
+//        return ans;
+//    }
+//}
+
+
+//public class Test {
+//    public static void main(String[] args) {
+//        for(int i=1;i<10;i++)
+//        {
+//            System.out.println(Fib(i));
+//        }
+//    }
+//    public static int Fib(int n) {
+//        if(n<=0) {
+//            return -1;
+//        }
+//        else if(n==1||n==2) {
+//            return 1;
+//        }
+//        else
+//            return Fib(n-1)+Fib(n-2);
+//    }
+//}
+
+
+//public class Test {
+//    public static void main(String[] args) {
+//        Scanner input=new Scanner(System.in);
+//        System.out.println("请输入n：");
+//        int n=input.nextInt();
+//        System.out.println(Sum(n));
+//    }
+//    public static int fun(int n) {
+//       int res=1;
+//       for (int i=1;i<=n;i++) {
+//            res*=i;
+//       }
+//       return res;
+//    }
+//    public static int Sum(int n){
+//        int sum=0;
+//        for(int i=1;i<=n;i++){
+//            sum+=fun(i);
+//        }
+//        return sum;
+//    }
+//}
+//import java.util.Scanner;
+//public class Test {
+//    public static void main(String[] args) {
+//        Scanner input=new Scanner(System.in);
+//        System.out.println("请输入n：");
+//        int n=input.nextInt();
+//        System.out.println(fun(n));
+//    }
+//    public static int fun(int n) {
+//        int res=1;
+//        for (int i=1;i<=n;i++) {
+//            res*=i;
+//        }
+//        return res;
+//    }
+//}
+//
+//
+
+import java.util.Scanner;
+//public class Test {
+//    public static void main(String[] args) {
+//       int[] arr={1,2,3,4,5,6,7,8,9,10};
+//        System.out.println(Arrays.toString(arr));
+//        System.out.println(Arrays.toString(Odd_Even(arr)));
+//    }
+//    public static int[] Odd_Even(int[] a) {
+//        int left=0;
+//        int right=a.length-1;
+//        while(left<right){
+//            while ((left<right) && a[left] % 2 != 0)//从左边开始找一个奇数
+//            {
+//                left++;
+//            }
+//            while ((left<right) && a[right] % 2 == 0)//从右边开始找一个偶数
+//            {
+//                right--;
+//            }
+//            if (left < right)//基于上面两个循环找出来的奇数与偶数，
+//                             // 若left<right，则交换两个数
+//            {
+//                int tmp = a[left];
+//                a[left] = a[right];
+//			    a[right] = tmp;
+//            }
+//        }
+//        return a;
+//    }
+//}
+
+//public class Test {
+//    public static void main(String[] args) {
+//        int a=1,b=2,c=3;
+//        System.out.println(MAX3(a,b,c));
+//    }
+//    public static int MAX3(int a,int b,int c) {
+//        if(a>MAX2(b,c)){
+//            return a;
+//        }
+//        else return MAX2(b,c);
+//    }
+//    public static int MAX2(int a,int b){
+//        if(a>=b){
+//            return a;
+//        }
+//        else return b;
+//    }
+//}
+//
+
+//public class Test {
+//    public static void main(String[] args) {
+//        System.out.println(MAX3(1.3,1.5,1));
+//    }
+//    public static double MAX3(double a,int b,double c) {
+//        if(a>MAX2(b,c)){
+//            return a;
+//        }
+//        else return MAX2(b,c);
+//    }
+//    public static double MAX3(int a,double b,double c) {
+//        if(a>MAX2(b,c)){
+//            return a;
+//        }
+//        else return MAX2(b,c);
+//    }
+//    public static double MAX3(double a,double b,int c) {
+//        if(a>MAX2(b,c)){
+//            return a;
+//        }
+//        else return MAX2(b,c);
+//    }
+//    public static int MAX2(int a,int b){
+//        if(a>=b){
+//            return a;
+//        }
+//        else return b;
+//    }
+//    public static double MAX2(double a,double b){
+//        if(a>=b){
+//            return a;
+//        }
+//        else return b;
+//    }
+//    public static double MAX2(int a,double b){
+//        if(a>=b){
+//            return a;
+//        }
+//        else return b;
+//    }
+//}
+
+public class Test {
+    public static void main(String[] args) {
+        System.out.println(SUM2(1,3));
+        System.out.println(SUM2(1.5,3));
+        System.out.println(SUM3(1.3,1.5,1.1));
+    }
+    public static double SUM3(double a,double b,double c) {
+       return a+b+c;
+    }
+    public static int SUM2(int a,int b){
+        return a+b;
+    }
+    public static double SUM2(double a,int b){
+        return a+b;
+    }
+}
